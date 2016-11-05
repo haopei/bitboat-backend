@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/api/v1/Users', 'UsersController@index');
+
+Route::get('/api/v1/user/login', 'UsersController@login');
