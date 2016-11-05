@@ -17,6 +17,7 @@ class CreateBidsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('order_id')->unsigned();
+            $table->integer('producer_location_id')->unsigned();
             $table->decimal('price', 15, 2);
             $table->string('description');
             $table->integer('quantity');
