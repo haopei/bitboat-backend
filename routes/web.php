@@ -27,6 +27,10 @@ Route::get('api/all', 'UsersController@apis');
 Route::get('/api/v1/Users', 'UsersController@index');
 
 Route::get('/api/v1/user/login', 'UsersController@login');
+Route::get('/api/v1/user/{id}', 'UsersController@UserByIdGet');
+
+Route::get('/api/v1/produces/all', 'ProducesController@index');
+
 Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
 
