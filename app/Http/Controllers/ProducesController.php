@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Produce;
 
 class ProducesController extends Controller
 {
@@ -13,7 +15,9 @@ class ProducesController extends Controller
      */
     public function index()
     {
-        //
+        $produces = Produce::all();
+
+        return response()->json($produces);
     }
 
     /**
