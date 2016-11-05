@@ -17,6 +17,11 @@ class ProducesController extends Controller
     {
         $produces = Produce::all();
 
+        foreach($produces as $obj) {
+            $split = explode('.', $obj->image_url);
+            $obj->thumb_url = "$split[0]_thumb.jpg";
+        }
+
         return response()->json($produces);
     }
 
