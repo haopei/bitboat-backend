@@ -16,7 +16,9 @@ class CreateSupplierTable extends Migration
         Schema::create('supplier', function(Blueprint $table){
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('producer_id');
+            $table->integer('produce_id');
+            $table->boolean('availability');
+            $table->integer('quantity');
         });
     }
 

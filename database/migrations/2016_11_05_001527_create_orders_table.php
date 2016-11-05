@@ -13,8 +13,7 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-
-        Schmea::create('orders', function(Blueprint $table){
+        Schema::create('orders', function(Blueprint $table){
             $table->increments('id');
             $table->integer('produce_id');
             $table->integer('quantity');
