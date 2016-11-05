@@ -44,6 +44,7 @@ Route::get('/api/v1/locations/all', 'LocationsController@index');
 Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 
 
+Route::put('/api/v1/bids/create', 'BidsController@create');
 
 Auth::routes();
 

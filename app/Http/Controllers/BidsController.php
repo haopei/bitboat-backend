@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bid;
 
 class BidsController extends Controller
 {
@@ -23,7 +24,19 @@ class BidsController extends Controller
      */
     public function create()
     {
-        //
+        $input = Input::all();
+        $bid = new Bid;
+        $bid->user_id = Input::get('userId');
+        $bid->order_id = Input::get('orderId');
+        $bid->price = Input::get('price');
+        $bid->description = Input::get('discription');
+        $bid->quantity = Input::get('quantity');
+        $bid->active = Input::get('active');
+        $bid->approved = Input::get('approved');
+
+        $bid->save();
+
+        return response()->json($bid);
     }
 
     /**
