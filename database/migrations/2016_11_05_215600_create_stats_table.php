@@ -18,8 +18,8 @@ class CreateStatsTable extends Migration
             $table->integer('produce_id')->unsigned();
             $table->integer('produced')->unsigned();
             $table->integer('demanded')->unsigned();
-            $table->integer('bid_avg')->unsigned();
-            $table->integer('order_avg')->unsigned();
+            $table->integer('bid_avg');
+            $table->integer('order_avg');
             $table->integer('month');
         });
     }

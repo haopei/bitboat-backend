@@ -17,6 +17,7 @@ class CreateProducesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image_url');
+            $table->integer('price_avg');
             $table->text('description');
         });
     }
