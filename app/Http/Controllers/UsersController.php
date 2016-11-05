@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use DB;
 use App\User;
 
@@ -133,6 +134,13 @@ class UsersController extends Controller
     public function apis() {
         \Artisan::call('route:list');
         return '<pre>' . \Artisan::output() . '</pre>';
+    }
+
+
+    public function UserByIdGet($id) {
+        $user = DB::table('users')->where('id', $id)->first();
+
+        return response()->json($user);
     }
 
 }
