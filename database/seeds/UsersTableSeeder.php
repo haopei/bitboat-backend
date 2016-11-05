@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('roles')->insert(['name' => 'supplier']);
         DB::table('roles')->insert(['name' => 'producer']);
 
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('produces')->insert([
                 'name' => "$faker->word $faker->word",
                 'image_url' => $faker->imageUrl(640, 480),
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 200; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('locations')->insert([
                 'country' => 'Guyana',
                 'region' =>  $faker->city,
