@@ -20,6 +20,7 @@ class CreateBidsTable extends Migration
             $table->decimal('price', 15, 2);
             $table->string('description');
             $table->boolean('active');
+            $table->boolean('approved');
         });
     }
 
