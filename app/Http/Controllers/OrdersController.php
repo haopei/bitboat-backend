@@ -55,6 +55,23 @@ class OrdersController extends Controller
         return response()->json($order);
     }
 
+    public function BidsByOrderIdGet($id) {
+        $bids = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->leftJoin('bids', 'bids.user_id', '=', 'users.id')
+            ->leftJoin('orders', 'orders.id', '=', 'bids.order_id')
+            ->where('orders.id', $id)
+            ->where('roles.id', 2)
+            ->select('bids.*',
+                'roles.name as role_name',
+                'roles.id as role_id'
+            )->get();
+
+        return response()->json($bids);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
