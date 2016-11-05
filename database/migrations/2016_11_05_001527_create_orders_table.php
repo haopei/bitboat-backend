@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('produce_id');
             $table->integer('quantity');
             $table->integer('location_id')->unsigned();
+            $table->boolean('active');
         });
     }
 
