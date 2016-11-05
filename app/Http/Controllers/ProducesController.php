@@ -53,7 +53,7 @@ class ProducesController extends Controller
 
     public function ByIdGet($id) {
         $produce = DB::table('produces')
-            ->where('id', $id)->get();
+            ->where('id', $id)->first();
 
         return response()->json($produce);
     }
