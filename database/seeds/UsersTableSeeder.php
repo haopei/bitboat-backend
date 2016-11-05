@@ -11,10 +11,27 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
         DB::table('roles')->insert(['name' => 'supplier']);
         DB::table('roles')->insert(['name' => 'producer']);
 
-        $faker = Faker\Factory::create();
+        for ($i = 1; $i <= 100; $i++) {
+            DB::table('produces')->insert([
+                'name' => "$faker->word $faker->word",
+                'image_url' => $faker->imageUrl(640, 480),
+                'description' => $faker->paragraph(2)
+            ]);
+        }
+
+        for ($i = 1; $i <= 200; $i++) {
+            DB::table('locations')->insert([
+                'country' => 'Guyana',
+                'region' =>  $faker->region,
+                'address' => $faker->address
+            ]);
+        }
+
+
         for ($i = 1; $i <= 10; $i++ ) {
             DB::table('users')->insert([
                 'first_name' => $faker->firstName, 
