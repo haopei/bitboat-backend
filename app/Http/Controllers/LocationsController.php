@@ -15,9 +15,15 @@ class LocationsController extends Controller
      */
     public function index()
     {
-        $locations = Locations::all();
+        $locations = Location::all();
 
         return response()->json($locations);
+    }
+
+    public function ByIdGet($id) {
+        $location = Location::find($id);
+
+        return response()->json($location);
     }
 
     /**
@@ -54,7 +60,7 @@ class LocationsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+ *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

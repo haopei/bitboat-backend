@@ -40,6 +40,8 @@ Route::get('/api/v1/orders/all', 'OrdersController@index');
 Route::post('/api/v1/orders/activition', 'OrdersController@activition');
 Route::post('/api/v1/orders/create', 'OrdersController@create');
 
+Route::get('/api/v1/locations/all', 'LocationsController@index');
+Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 
 
 
