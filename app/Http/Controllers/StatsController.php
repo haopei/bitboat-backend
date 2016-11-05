@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class StatsController extends Controller
 {
@@ -13,7 +14,15 @@ class StatsController extends Controller
      */
     public function index()
     {
-        //
+        $stats = DB::table('stats')
+            ->leftJoin('produces', 'produces.id', '=', 'stats.produce_id')
+            ->select(
+                'stats.*',
+                'produces.name as produce_name',
+                'produces.id as produce_id'
+            )->get();
+
+        return response()->json($stats);
     }
 
     /**
