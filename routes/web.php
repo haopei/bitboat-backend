@@ -15,10 +15,24 @@ header("Access-Control-Allow-Methods: OPTIONS, GET, POST");
 |
 */
 
+Route::get('auth/login', 'UsersController@login');
+Route::post('auth/login', 'UsersController@authenticate');
+Route::get('auth/logout', 'UsersController@logout');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('api/all', 'UsersController@apis');
 Route::get('/api/v1/Users', 'UsersController@index');
 
 Route::get('/api/v1/user/login', 'UsersController@login');
+Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
+Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
