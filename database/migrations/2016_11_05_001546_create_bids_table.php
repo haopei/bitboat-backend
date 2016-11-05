@@ -19,6 +19,7 @@ class CreateBidsTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->decimal('price', 15, 2);
             $table->string('description');
+            $table->integer('quantity');
             $table->boolean('active');
             $table->boolean('approved');
         });
