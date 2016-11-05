@@ -50,6 +50,13 @@ class ProducesController extends Controller
 
     }
 
+    public function ByIdGet($id) {
+        $produce = DB::table('produces')
+            ->where('id', $id)->get();
+
+        return response()->json($produce);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
