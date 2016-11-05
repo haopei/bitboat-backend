@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         for ($i = 1; $i <= 200; $i++) {
             DB::table('locations')->insert([
                 'country' => 'Guyana',
-                'region' =>  $faker->region,
+                'region' =>  $faker->city,
                 'address' => $faker->address
             ]);
         }
