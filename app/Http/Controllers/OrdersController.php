@@ -25,15 +25,21 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($produceId)
     {
-        $order = Input::all();
-         
-        //TODO: validate
+        $input = Input::all();
 
-        return resource()->json(array(
-            "status" => "OK",
-        ));
+        $order = new Order;
+        $order->user_id = Input::get('user_id');
+        $order->produce_id = $produceId;
+        $order->quantity = Input::get('quantity');
+        $order->delivery_location_id = Input::get('deliveryLocationId');
+        $order->price = Input::get('price');
+        $order->active = Input::get('active');
+
+        $order->save();
+
+        return resource()->json($order);
     }
 
 
