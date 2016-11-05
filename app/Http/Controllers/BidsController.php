@@ -22,12 +22,12 @@ class BidsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($orderId)
     {
         $input = Input::all();
         $bid = new Bid;
         $bid->user_id = Input::get('userId');
-        $bid->order_id = Input::get('orderId');
+        $bid->order_id = $orderId;
         $bid->price = Input::get('price');
         $bid->description = Input::get('discription');
         $bid->quantity = Input::get('quantity');
