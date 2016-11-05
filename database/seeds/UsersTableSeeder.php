@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         DB::table('roles')->insert(['name' => 'supplier']);
-        DB::table('roles')->insert(['name' => 'producer']);
+        DB::table('roles')->insert(['name' => 'buyer']);
 
         $produces = array(
             array('name' =>  'apples', 'image_url' => 'img/apples.jpg', 'description' => ''),
@@ -68,10 +68,31 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('bitboat'),
             ]);
 
+            $userType = rand(1, 2);
             DB::table('user_roles')->insert([
                 'user_id' => $i,
-                'role_id' => rand(1, 2)
+                'role_id' => $userType
             ]);
+
+            for ($x = 1; $x <= 5; $x++ ) {
+                DB::table('suppliers')->insert([
+                    'user_id' => $i,
+                    'produce_id' => rand(1, 20),
+                    'availability' => rand(0, 1),
+                    'quantity' => rand(5, 300)
+                ]);
+            }
+
+            for ($x = 1; $x <= 3; $x++ ) {
+                DB::table('orders')->insert([
+                    'user_id' => $i,
+                    'produce_id' => rand(1, 20),
+                    'quantity' => rand(200, 800),
+                    'delivery_location_id' => 1,
+                    'price' => rand (120, 300),
+                    'active' => rand(0, 1)
+                ]);
+            }
 
         }
     }

@@ -15,9 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function(Blueprint $table){
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->integer('produce_id');
             $table->integer('quantity');
-            $table->integer('location_id')->unsigned();
+            $table->integer('delivery_location_id')->unsigned();
             $table->decimal('price', 15, 2);
             $table->boolean('active');
         });
