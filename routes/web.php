@@ -30,7 +30,7 @@ Route::get('/api/v1/user/login', 'UsersController@login');
 Route::get('/api/v1/user/{id}', 'UsersController@UserByIdGet');
 
 Route::get('/api/v1/produce/all', 'ProducesController@index');
-Route::get('/api/v1/produce/byId/{id}', 'ProducesController@ByIdGet');
+Route::get('/api/v1/produce/{id}', 'ProducesController@ByIdGet');
 Route::get('/api/v1/produce/byUserId/{id}', 'ProducesController@ByUserIdGet');
 
 Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
