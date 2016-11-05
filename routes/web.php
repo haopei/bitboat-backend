@@ -33,7 +33,7 @@ Route::get('/api/v1/produce/all', 'ProducesController@index');
 
 Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
-
+Route::get('/api/v1/orders/all', 'OrdersController@index');
 
 
 

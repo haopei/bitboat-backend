@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Option;
+use App\Order;
 
 class OrdersController extends Controller
 {
@@ -15,7 +15,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+
+        return response()->json($orders);
     }
 
     /**
