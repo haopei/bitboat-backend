@@ -22,6 +22,22 @@ class UsersController extends Controller
     }
 
     /**
+     * Supplier Data
+     */
+
+    public function supplier()
+    {
+    }
+
+
+    public function login()
+    {
+        return response()->json(array(
+            "status" => "OK"
+        ));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -86,4 +102,37 @@ class UsersController extends Controller
     {
         //
     }
+
+
+    public function BuyersAllGet() {
+        $users = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->where('roles.id', 1)
+            ->select('users.*',
+                'roles.name as role_name',
+                'roles.id as role_id')
+            ->get();
+
+        return response()->json($users);
+    }
+    
+    public function ProducersAllGet() {
+        $users = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->where('roles.id', 2)
+            ->select('users.*',
+                'roles.name as role_name',
+                'roles.id as role_id')
+            ->get();
+
+        return response()->json($users);
+    }
+
+    public function apis() {
+        \Artisan::call('route:list');
+        return '<pre>' . \Artisan::output() . '</pre>';
+    }
+
 }
