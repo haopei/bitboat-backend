@@ -25,6 +25,31 @@ class ProducesController extends Controller
         return response()->json($produces);
     }
 
+
+    public function ByUserIdGet($id) {
+        $produces = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->leftJoin('suppliers', 'suppliers.user_id', '=', 'users.id')
+            ->leftJoin('produces', 'produces.id', '=', 'suppliers.produce_id')
+            ->where('roles.id', 1)
+            ->where('users.id', $id)
+            ->select('users.id as userId',
+                'roles.name as roleName',
+                'roles.id as roleId',
+                'produces.name as produceName',
+                'produces.description as produceDescription',
+                'produces.image_url as produceImageUrl', 
+                'suppliers.availability as supplierAvailability',
+                'suppliers.quantity as supplierQuantity'
+            )
+            ->get();
+
+
+        return response()->json($produces);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
