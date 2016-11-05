@@ -37,6 +37,7 @@ class ProducesController extends Controller
             ->select('users.id as userId',
                 'roles.name as roleName',
                 'roles.id as roleId',
+                'produces.id as produceId',
                 'produces.name as produceName',
                 'produces.description as produceDescription',
                 'produces.image_url as produceImageUrl', 
