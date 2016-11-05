@@ -23,20 +23,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('api/all', 'UsersController@apis');
+Route::get('/api/all', 'UsersController@apis');
 Route::get('/api/v1/Users', 'UsersController@index');
 
 Route::get('/api/v1/user/login', 'UsersController@login');
 Route::get('/api/v1/user/{id}', 'UsersController@UserByIdGet');
 
 Route::get('/api/v1/produce/all', 'ProducesController@index');
-Route::geT('/api/v1/produce/byId/{id}', 'ProducesController@ByIdGet');
+Route::get('/api/v1/produce/byId/{id}', 'ProducesController@ByIdGet');
 Route::get('/api/v1/produce/byUserId/{id}', 'ProducesController@ByUserIdGet');
 
 Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
+
 Route::get('/api/v1/orders/all', 'OrdersController@index');
-Route::post('api/v1/orders/create', 'OrdersController@create');
+Route::post('/api/v1/orders/activition', 'OrdersController@activition');
+Route::post('/api/v1/orders/create', 'OrdersController@create');
 
 
 

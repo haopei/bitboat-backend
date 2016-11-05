@@ -27,7 +27,26 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        $order = Input::all();
+         
+        //TODO: validate
+
+        return resource()->json(array(
+            "status" => "OK",
+        ));
+    }
+
+
+    public function activation(){
+        $id = Input::get('id');
+        $bool = Input::get('active');
+
+
+        $order = Order::find($id);
+        $order->id = $id;
+        $order->save();
+
+        return response()->json($order);
     }
 
     /**
