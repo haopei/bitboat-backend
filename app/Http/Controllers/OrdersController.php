@@ -29,6 +29,8 @@ class OrdersController extends Controller
      */
     public function create($produceId)
     {
+        Log::info(Input::all());
+
         $order = new Order;
         $order->user_id = Input::get('user_id');
         $order->produce_id = $produceId;
