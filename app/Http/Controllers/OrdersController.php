@@ -120,6 +120,7 @@ class OrdersController extends Controller
                 'roles.id as role_id',
                 'produces.id as produce_id',
                 'produces.name as produce_name',
+                'produces.image_url as produce_url',
                 'locations.country',
                 'locations.region',
                 'locations.address'
