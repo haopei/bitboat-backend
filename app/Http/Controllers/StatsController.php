@@ -25,6 +25,21 @@ class StatsController extends Controller
         return response()->json($stats);
     }
 
+    public function ByIdGet($id)
+    {
+        $stats = DB::table('stats')
+            ->leftJoin('produces', 'produces.id', '=', 'stats.produce_id')
+            ->where('produces.id', $id)
+            ->select(
+                'stats.*',
+                'produces.name as produce_name',
+                'produces.id as produce_id'
+            )->get();
+
+        return response()->json($stats);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
