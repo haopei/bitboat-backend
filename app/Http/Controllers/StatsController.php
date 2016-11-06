@@ -22,6 +22,17 @@ class StatsController extends Controller
                 'produces.id as produce_id'
             )->get();
 
+        foreach($stats as $obj) {
+            $obj->demand = false;
+
+            if ($obj->demanded < 0) $obj->demand = "no";
+            if ($obj->demanded > 100) $obj->demand = 'low';
+            if ($obj->demanded > 1000) $obj->demand = 'mid';
+            if ($obj->demanded > 10000) $obj->demand = 'high';
+            if ($obj->demanded > 100000) $obj->demand = 'very high';
+        }
+
+
         return response()->json($stats);
     }
 
@@ -35,6 +46,16 @@ class StatsController extends Controller
                 'produces.name as produce_name',
                 'produces.id as produce_id'
             )->get();
+
+        foreach($stats as $obj) {
+            $obj->demand = false;
+
+            if ($obj->demanded < 0) $obj->demand = "no";
+            if ($obj->demanded > 100) $obj->demand = 'low';
+            if ($obj->demanded > 1000) $obj->demand = 'mid';
+            if ($obj->demanded > 10000) $obj->demand = 'high';
+            if ($obj->demanded > 100000) $obj->demand = 'very high';
+        }
 
         return response()->json($stats);
     }
