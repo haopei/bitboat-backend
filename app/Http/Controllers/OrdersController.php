@@ -87,11 +87,20 @@ class OrdersController extends Controller
             ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
             ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
             ->leftJoin('bids', 'bids.user_id', '=', 'users.id')
+            ->leftJoin('orders', 'orders.id', '=', 'bids.order_id')
+            ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
+            ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
             ->where('users.id', $id)
             ->where('roles.id', 1)
             ->select('bids.*',
                 'roles.name as role_name',
-                'roles.id as role_id'
+                'roles.id as role_id',
+                'produces.id as produce_id',
+                'produces.name as produce_name',
+                'locations.country',
+                'locations.region',
+                'locations.address'
+
             )->get();
 
         return response()->json($bids);
