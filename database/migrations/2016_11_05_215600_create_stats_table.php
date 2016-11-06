@@ -21,6 +21,7 @@ class CreateStatsTable extends Migration
             $table->integer('bid_avg');
             $table->integer('order_avg');
             $table->integer('month');
+            $table->timestamps();
         });
     }
 

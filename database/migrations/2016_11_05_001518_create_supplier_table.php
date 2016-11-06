@@ -19,6 +19,7 @@ class CreateSupplierTable extends Migration
             $table->integer('produce_id');
             $table->boolean('availability');
             $table->integer('quantity');
+            $table->timestamps();
         });
     }
 

@@ -18,6 +18,7 @@ class CreateTrackingTable extends Migration
             $table->integer('status');
             $table->integer('producer_location_id')->unsigned();
             $table->integer('delivery_location_id')->unsigned();
+            $table->timestamps();
         });
     }
 

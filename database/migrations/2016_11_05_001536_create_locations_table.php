@@ -18,6 +18,8 @@ class CreateLocationsTable extends Migration
             $table->string('country');
             $table->string('region');
             $table->string('address');
+
+            $table->timestamps();
         });
     }
 

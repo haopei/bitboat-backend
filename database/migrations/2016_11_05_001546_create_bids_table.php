@@ -23,6 +23,7 @@ class CreateBidsTable extends Migration
             $table->integer('quantity');
             $table->boolean('active');
             $table->boolean('approved');
+            $table->timestamps();
         });
     }
 
