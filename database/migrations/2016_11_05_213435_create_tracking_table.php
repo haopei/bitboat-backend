@@ -15,6 +15,8 @@ class CreateTrackingTable extends Migration
     {
         Schema::create('tracking', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id');
+//            'PENDINNG, CONFIRMED, SHIPPED, SHIPPING INFO (CARGO)'
             $table->integer('status');
             $table->integer('producer_location_id')->unsigned();
             $table->integer('delivery_location_id')->unsigned();
