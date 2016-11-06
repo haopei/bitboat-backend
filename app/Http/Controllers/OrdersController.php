@@ -137,6 +137,7 @@ class OrdersController extends Controller
             ->where('orders.id', $id)
             ->select('orders.*',
                 'produces.name as produce_name',
+                'produces.image_url as produce_image_url',
                 'locations.country',
                 'locations.region',
                 'locations.address'
