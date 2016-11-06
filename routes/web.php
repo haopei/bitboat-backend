@@ -34,6 +34,10 @@ Route::get('/api/v1/produce/{id}', 'ProducesController@ByIdGet');
 Route::get('/api/v1/produce/byUserId/{id}', 'ProducesController@ByUserIdGet');
 Route::get('/api/v1/farmer/{id}/produce', 'ProducesController@ByUserIdGet');
 
+
+Route::post('/api/v1/produce/{produceId}/add', 'ProducesController@addProduce');
+
+
 Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
 

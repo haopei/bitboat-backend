@@ -65,7 +65,13 @@ class ProducesController extends Controller
      */
     public function create()
     {
-        //
+        $produce = new Produce;
+        $produce->name = Input::get('name');
+        $produce->image_url = Input::get('imageUrl');
+        $produce->description = Input::geT('description');
+        $produce->save();
+
+        return response()->json($produce);
     }
 
     /**
