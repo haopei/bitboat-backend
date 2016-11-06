@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->integer('delivery_location_id')->unsigned();
             $table->decimal('price', 15, 2);
             $table->boolean('active');
+            
+            $table->timestamps();
         });
     }
 
