@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('roles')->insert(['name' => 'supplier']);
         DB::table('roles')->insert(['name' => 'buyer']);
 
+        //Pine apple
         $produces = array(
             array('name' =>  'apples', 'image_url' => 'img/apples.jpg', 'description' => '', 'price_avg' => '450', 'monthly_avg' => '45000'),
             array('name' =>  'avocados', 'image_url' => 'img/avocados.jpg', 'description' => '', 'price_avg' => '500', 'monthly_avg' => '9000'),
@@ -72,31 +73,141 @@ class UsersTableSeeder extends Seeder
                 ]);
             }
         }
+        $Locations = array(
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Borda Market G/Town'), //1
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Sherif Street'), //2 
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Georgetown Docks'), //3
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Sherif Street'), //4
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Albert Town'), //5
+            array('country' => 'Guyana', 'region' => '3', 'address' => 'Parika'), //6
+            array('country' => 'Guyana', 'region' => '3', 'address' => 'Lenora'), //7
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Mon Repos E.C.D'), //8
+            array('country' => 'Guyana', 'region' => '5', 'address' => 'Mahica'), //9
+            array('country' => 'Guyana', 'region' => '6', 'address' => 'New Amsterdam'), //10
+            array('country' => 'Guyana', 'region' => '6', 'address' => 'Rose Hall'), //11
+            array('country' => 'Guyana', 'region' => '4', 'address' => 'Pleasance E.C.D'), //12
+            array('country' => 'Trinidad', 'region' => '1', 'address' => 'Keys Port, Trinidad'), //13
+            array('country' => 'Barbados', 'region' => '1', 'address' => 'Fly Barbados, Barbados') //14
+        );
 
-        for ($i = 1; $i <= 20; $i++) {
+        foreach ($Locations as $loc) {
             DB::table('locations')->insert([
-                'country' => 'Guyana',
-                'region' =>  $faker->city,
-                'address' => $faker->address
+                'country' => $loc['country'],
+                'region' =>  $loc['region'],
+                'address' => $loc['address']
             ]);
         }
 
+        $Buyers = array(
+            array('bname' => 'G/Town Market Vendor 1', 'loc_id' => '1', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'G/Town Market Vender 2', 'loc_id' => '1', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'G/Town Resterants 1', 'loc_id' => '2', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Cruse Ships', 'loc_id' => '', 'desc' => '1', 'role' => 'buyer'),
+            array('bname' => 'Survival Supermarket', 'loc_id' => '2', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Nigels Supermarket', 'loc_id' => '5', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Parika Market Vendor 1', 'loc_id' => '6', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Parika Market Vendor 2', 'loc_id' => '6', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Parika Supermarket 1', 'loc_id' => '6', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Lenora Supermarket 1', 'loc_id' => '7', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Lenora Supermarket 2', 'loc_id' => '7', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mon Repos Vendor 1', 'loc_id' => '8', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mon Repos Vendor 2', 'loc_id' => '8', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mon Repos Vendor 3', 'loc_id' => '8', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Atlantic Gardens Supermarket 1', 'loc_id' => '8', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mahica Market Vendor 1', 'loc_id' => '9', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mahica Market Vendor 2', 'loc_id' => '9', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Mahica Market Vendor 3', 'loc_id' => '9', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'New Amsterdam Market Vendor 1', 'loc_id' => '10', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'New Amsterdam Market Vender 2', 'loc_id' => '10', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Port Mourant Market Vendor 1', 'loc_id' => '11', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Pleasance Market Vendor 1', 'loc_id' => '12', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Pleasance Supermarket 1', 'loc_id' => '12', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Trinidad Plantain Imports', 'loc_id' => '13', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Barbados Timber Imports', 'loc_id' => '14', 'desc' => '', 'role' => 'buyer'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier'),
+            array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier')
+        );
 
-        for ($i = 1; $i <= 10; $i++ ) {
+        foreach($Buyers as $buyer) {
             DB::table('users')->insert([
+                'username' => $faker->name,
                 'first_name' => $faker->firstName, 
                 'last_name' => $faker->lastName, 
                 'landline' => $faker->phoneNumber,
                 'cellphone' => $faker->phoneNumber,
-                'business_name' => $faker->company, 
-                'location_id' => $faker->randomDigitNotNull,
+                'business_name' => $buyer['bname'], 
+                'location_id' => (int) $buyer['loc_id'],
                 'image_url' => $faker->url,
                 'description' =>  $faker->paragraph(1),
                 'email' => $faker->email,
                 'password' => bcrypt('bitboat'),
             ]);
 
-            $userType = rand(1, 2);
+            $userType = 1;
+            if ($buyer['role'] == 'buyer')
+                $userType = 2;
+
             DB::table('user_roles')->insert([
                 'user_id' => $i,
                 'role_id' => $userType
