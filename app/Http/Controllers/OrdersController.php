@@ -92,6 +92,7 @@ class OrdersController extends Controller
             ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
             ->where('users.id', $id)
             ->where('roles.id', 1)
+            ->orderBy('bids.id', 'DESC')
             ->select('bids.*',
                 'roles.name as role_name',
                 'roles.id as role_id',
@@ -115,6 +116,7 @@ class OrdersController extends Controller
             ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
             ->where('users.id', $id)
             ->where('roles.id', 2)
+            ->orderBy('orders.id', 'DESC')
             ->select('orders.*',
                 'roles.name as role_name',
                 'roles.id as role_id',
