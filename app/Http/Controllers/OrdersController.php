@@ -17,7 +17,16 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = DB::table('orders')
+            ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
+            ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
+            ->select('orders.*',
+                'produces.name as produce_name',
+                'locations.country',
+                'locations.region',
+                'locations.address'
+            )->get(); 
+
 
         return response()->json($orders);
     }
