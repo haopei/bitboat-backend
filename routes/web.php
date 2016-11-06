@@ -54,7 +54,7 @@ Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 
 
 Route::put('/api/v1/bids/create/{orderId}', 'BidsController@create');
-Route::get('/api/v1/bids/{userId/bids', 'OrdersController@BidsByUserIdGet');
+Route::get('/api/v1/bids/{userId}/bids', 'OrdersController@BidsByUserIdGet');
 
 Route::get('/api/v1/stats/all', 'StatsController@index');
 Route::get('/api/v1/stats/{id}', 'StatsController@ByIdGet');
