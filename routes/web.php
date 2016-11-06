@@ -47,6 +47,8 @@ Route::post('/api/v1/orders/activition', 'OrdersController@activition');
 Route::post('/api/v1/orders/create/{produceId}', 'OrdersController@create');
 Route::get('/api/v1/orders/{orderId}/bids', 'OrdersController@BidsByOrderIdGet');
 
+Route::get('/api/v1/user/{userId}/orders', 'OrdersController@OrdersByUserIdGet');
+
 Route::get('/api/v1/locations/all', 'LocationsController@index');
 Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 

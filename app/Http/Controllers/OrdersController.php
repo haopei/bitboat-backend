@@ -88,6 +88,22 @@ class OrdersController extends Controller
 
         return response()->json($bids);
     }
+    
+    public function OrdersByUserIdGet($id) {
+        $bids = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->leftJoin('orders', 'orders.user_id', '=', 'users.id')
+            ->where('users.id', $id)
+            ->where('roles.id', 2)
+            ->select('orders.*',
+                'roles.name as role_name',
+                'roles.id as role_id'
+            )->get();
+
+        return response()->json($bids);
+    }
+
 
 
 
