@@ -48,13 +48,13 @@ Route::post('/api/v1/orders/create/{produceId}', 'OrdersController@create');
 Route::get('/api/v1/orders/{orderId}/bids', 'OrdersController@BidsByOrderIdGet');
 
 Route::get('/api/v1/user/{userId}/orders', 'OrdersController@OrdersByUserIdGet');
+Route::get('/api/v1/user/{userId}/bids', 'OrdersController@BidsByUserIdGet');
 
 Route::get('/api/v1/locations/all', 'LocationsController@index');
 Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 
 
 Route::put('/api/v1/bids/create/{orderId}', 'BidsController@create');
-Route::get('/api/v1/bids/{userId}/bids', 'OrdersController@BidsByUserIdGet');
 
 Route::get('/api/v1/stats/all', 'StatsController@index');
 Route::get('/api/v1/stats/{id}', 'StatsController@ByIdGet');
