@@ -191,7 +191,7 @@ class UsersTableSeeder extends Seeder
 
         foreach($Buyers as $i => $buyer) {
             DB::table('users')->insert([
-                'username' => $faker->name,
+                'username' => $faker->userName,
                 'first_name' => $faker->firstName, 
                 'last_name' => $faker->lastName, 
                 'landline' => $faker->phoneNumber,
@@ -215,7 +215,7 @@ class UsersTableSeeder extends Seeder
 
             for ($x = 1; $x <= 5; $x++ ) {
                 DB::table('suppliers')->insert([
-                    'user_id' => $i,
+                    'user_id' => $i+1,
                     'produce_id' => rand(1, 20),
                     'availability' => rand(0, 1),
                     'quantity' => rand(5, 300)
@@ -224,7 +224,7 @@ class UsersTableSeeder extends Seeder
 
             for ($x = 1; $x <= 3; $x++ ) {
                 DB::table('orders')->insert([
-                    'user_id' => $i,
+                    'user_id' => $i+1,
                     'produce_id' => rand(1, 20),
                     'quantity' => rand(200, 800),
                     'delivery_location_id' => 1,
