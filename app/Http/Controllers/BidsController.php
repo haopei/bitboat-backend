@@ -35,6 +35,7 @@ class BidsController extends Controller
         $bid->quantity = Input::get('quantity');
         $bid->active = Input::get('active');
         $bid->approved = Input::get('approved');
+        $bid->producer_location_id = Input::get('producer_location_id');
 
         $bid->save();
 
