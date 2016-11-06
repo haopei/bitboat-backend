@@ -138,7 +138,15 @@ class UsersController extends Controller
 
 
     public function UserByIdGet($id) {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = DB::table('users')
+            ->leftJoin('user_roles', 'user_roles.user_id', '=', 'users.id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->where('users.id', $id)
+            ->select('users.*',
+                'roles.name as role_name',
+                'roles.id as role_id')
+                ->get();
+
 
         return response()->json($user);
     }

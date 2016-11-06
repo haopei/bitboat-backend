@@ -189,7 +189,7 @@ class UsersTableSeeder extends Seeder
             array('bname' => 'Local Joes', 'loc_id' => rand(1,14), 'desc' => '', 'role' => 'supplier')
         );
 
-        foreach($Buyers as $buyer) {
+        foreach($Buyers as $i => $buyer) {
             DB::table('users')->insert([
                 'username' => $faker->name,
                 'first_name' => $faker->firstName, 
@@ -209,7 +209,7 @@ class UsersTableSeeder extends Seeder
                 $userType = 2;
 
             DB::table('user_roles')->insert([
-                'user_id' => $i,
+                'user_id' => $i+1,
                 'role_id' => $userType
             ]);
 
