@@ -41,7 +41,7 @@ class OrdersController extends Controller
 
         $order->save();
 
-        return resource()->json($order);
+        return response()->json($order);
     }
 
 
