@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Order;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Input;
 
 class OrdersController extends Controller
 {
