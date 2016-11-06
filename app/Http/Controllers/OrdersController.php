@@ -120,8 +120,9 @@ class OrdersController extends Controller
             ->leftJoin('bids', 'bids.user_id', '=', 'users.id')
             ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
             ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
-            ->where('bids.order_id', $id)
-            ->where('roles.id', 2)
+            ->where('orders.id', $id)
+            ->where('roles.id', 1)
+            ->whereNotNull('bids.id')
             ->select('bids.*',
                 'roles.name as role_name',
                 'roles.id as role_id',
