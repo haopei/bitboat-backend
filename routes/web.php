@@ -42,6 +42,7 @@ Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
 
 Route::get('/api/v1/orders/all', 'OrdersController@index');
+Route::get('/api/v1/orders/{id}', 'OrdersController@ByIdGet');
 Route::post('/api/v1/orders/activition', 'OrdersController@activition');
 
 Route::post('/api/v1/orders/create/{produceId}', 'OrdersController@create');
