@@ -103,6 +103,22 @@ class OrdersController extends Controller
         return response()->json($bids);
     }
 
+    public function ByIdGet($id) {
+        $order = DB::table('orders')
+            ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
+            ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
+            ->where('orders.id', $id)
+            ->select('orders.*',
+                'produces.name as produce_name',
+                'locations.country',
+                'locations.region',
+                'locations.address'
+            )->first(); 
+
+
+        return response()->json($order);
+    }
+
 
 
 
