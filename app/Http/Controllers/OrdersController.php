@@ -110,6 +110,31 @@ class OrdersController extends Controller
         return response()->json($bids);
     }
 
+    public function BidsPerOrderIdGet($id)
+    {
+        $bids = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->leftJoin('suppliers', 'suppliers.user_id', '=', 'users.id')
+            ->leftJoin('orders', 'orders.produce_id', '=', 'suppliers.produce_id')
+            ->leftJoin('bids', 'bids.user_id', '=', 'users.id')
+            ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
+            ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
+            ->where('bids.order_id', $id)
+            ->where('roles.id', 2)
+            ->select('bids.*',
+                'roles.name as role_name',
+                'roles.id as role_id',
+                'produces.id as produce_id',
+                'produces.name as produce_name',
+                'locations.country',
+                'locations.region',
+                'locations.address'
+            )->get();
+
+        return response()->json($bids);
+    }
+
 
     public function BidsByUserIdGet($id) {
         $bids = DB::table('users')
@@ -135,7 +160,7 @@ class OrdersController extends Controller
 
         return response()->json($bids);
     }
-    
+
     public function OrdersByUserIdGet($id) {
         $bids = DB::table('users')
             ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
