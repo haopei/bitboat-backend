@@ -42,20 +42,20 @@ Route::get('/api/v1/buyers/all', 'UsersController@BuyersAllGet');
 Route::get('/api/v1/producers/all', 'UsersController@ProducersAllGet');
 
 Route::get('/api/v1/orders/all', 'OrdersController@index');
-Route::get('/api/v1/orders/{id}', 'OrdersController@ByIdGet');
 Route::post('/api/v1/orders/activition', 'OrdersController@activition');
 
 Route::post('/api/v1/orders/create/{produceId}', 'OrdersController@create');
 Route::get('/api/v1/orders/{orderId}/bids', 'OrdersController@BidsByOrderIdGet');
 
 Route::get('/api/v1/user/{userId}/orders', 'OrdersController@OrdersByUserIdGet');
+Route::get('/api/v1/user/{userId}/interest', 'OrdersController@AssBidsIdGet');
 Route::get('/api/v1/user/{userId}/bids', 'OrdersController@BidsByUserIdGet');
 
 Route::get('/api/v1/locations/all', 'LocationsController@index');
 Route::get('/api/v1/locations/{id}', 'LocationsController@ByIdGet');
 
 
-Route::post('/api/v1/bids/create/{orderId}', 'BidsController@create');
+Route::put('/api/v1/bids/create/{orderId}', 'BidsController@create');
 
 Route::get('/api/v1/stats/all', 'StatsController@index');
 Route::get('/api/v1/stats/{id}', 'StatsController@ByIdGet');

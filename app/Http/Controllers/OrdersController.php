@@ -20,6 +20,7 @@ class OrdersController extends Controller
         $orders = DB::table('orders')
             ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
             ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
+            ->orderBy('orders.id', 'DESC')
             ->select('orders.*',
                 'produces.name as produce_name',
                 'locations.country',
@@ -79,9 +80,37 @@ class OrdersController extends Controller
                 'roles.id as role_id'
             )->get();
 
+        //IF produces in ID and orders created at notNull
+
         return response()->json($bids);
     }
-    
+
+    public function AssBidsIdGet($id)
+    {
+        $bids = DB::table('users')
+            ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
+            ->leftJoin('roles', 'roles.id', '=', 'user_roles.role_id')
+            ->leftJoin('suppliers', 'suppliers.user_id', '=', 'users.id')
+            ->leftJoin('orders', 'orders.produce_id', '=', 'suppliers.produce_id')
+            ->leftJoin('produces', 'produces.id', '=', 'orders.produce_id')
+            ->leftJoin('locations', 'locations.id', '=', 'orders.delivery_location_id')
+            ->where('orders.id', $id)
+            ->where('roles.id', 2)
+            ->whereNotNull('orders.created_at')
+            ->select('orders.*',
+                'roles.name as role_name',
+                'roles.id as role_id',
+                'produces.id as produce_id',
+                'produces.name as produce_name',
+                'locations.country',
+                'locations.region',
+                'locations.address'
+            )->get();
+
+        return response()->json($bids);
+    }
+
+
     public function BidsByUserIdGet($id) {
         $bids = DB::table('users')
             ->leftJoin('user_roles', 'users.id', '=', 'user_roles.user_id')
