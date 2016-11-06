@@ -190,8 +190,14 @@ class UsersTableSeeder extends Seeder
         );
 
         foreach($Buyers as $i => $buyer) {
+            $k = $i+1;
+            if ($buyer['role'] == 'buyer')
+                $username = "buyer_$k";
+            else
+                $username = "farmer_$k";
+
             DB::table('users')->insert([
-                'username' => $faker->userName,
+                'username' => "$username",
                 'first_name' => $faker->firstName, 
                 'last_name' => $faker->lastName, 
                 'landline' => $faker->phoneNumber,
